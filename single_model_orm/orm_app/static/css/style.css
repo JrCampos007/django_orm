@@ -1,0 +1,14 @@
+#top, #bottom{
+    text-align: center;     /*centers h1 */
+    max-width: 1000px;
+    margin: auto;           /*centers table*/
+    margin-top: 50px;
+}
+
+hr#line {
+    border: 1px solid black;
+}
+
+.col {
+    margin: 25px;
+}
