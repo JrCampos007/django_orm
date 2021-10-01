@@ -1,0 +1,34 @@
+Dojo.objects.create(name="Fire nation", city="Portland", state="OR")
+Dojo.objects.create(name="Water nation", city="Detroit", state="MI")
+Dojo.objects.create(name="Air nation", city="Los Angeles", state="CA")
+d = Dojo.objects.get(id=1)
+d.delete()
+d = Dojo.objects.get(id=2)
+d.delete()
+d = Dojo.objects.get(id=3)
+d.delete()
+Dojo.objects.create(name="Yugioh", city="Portland", state="OR")
+Dojo.objects.create(name="Cobra Kai", city="Hood River", state="OR")
+Dojo.objects.create(name="Karate Kid", city="The Dalles", state="OR")
+
+Ninja.objects.create(first_name="Jose", last_name="Campos", dojo=Dojo.objects.get(id=4))
+Ninja.objects.create(first_name="Noe", last_name="Pavon", dojo=Dojo.objects.get(id=4))
+Ninja.objects.create(first_name="Kevin", last_name="Zuriel", dojo=Dojo.objects.get(id=4))
+Ninja.objects.create(first_name="Gissel", last_name="Toxica", dojo=Dojo.objects.get(id=5))
+Ninja.objects.create(first_name="Mario", last_name="Bros", dojo=Dojo.objects.get(id=5))
+Ninja.objects.create(first_name="Luigi", last_name="Green", dojo=Dojo.objects.get(id=5))
+Ninja.objects.create(first_name="Mario", last_name="Red", dojo=Dojo.objects.get(id=6))
+Ninja.objects.create(first_name="Jose Manuel", last_name="Reyes", dojo=Dojo.objects.get(id=6))
+Ninja.objects.create(first_name="Loca", last_name="Marlene", dojo=Dojo.objects.get(id=6))
+
+ninjas = Ninja.objects.filter(dojo=Dojo.objects.get(id=4))
+ninjas.values('first_name', 'last_name')  
+-- note that .values works when you have a QuerySet aka list of results --
+
+ninjas = Ninja.objects.filter(dojo=Dojo.objects.get(id=6))
+ninjas.values('first_name', 'last_name')
+
+ninja = Ninja.objects.get(id=9)
+ninja.dojo
+
+Dojo.objects.create(name="Red Fury", city="San Juan", state="CA", desc="Survival of the Fittest!") 
