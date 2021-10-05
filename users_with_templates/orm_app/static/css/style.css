@@ -1,0 +1,23 @@
+body {
+    background-image: url("https://cdn.wallpapersafari.com/6/16/bo73SI.jpg");
+    background-color: white;
+}
+#top, #bottom{
+    text-align: center;     /*centers h1 */
+    max-width: 1000px;
+    margin: auto;           /*centers table*/
+    margin-top: 50px;
+}
+th{
+    background-color: white;
+}
+
+tr:nth-child(even){background-color:lightgray}
+
+hr#line {
+    border: 1px solid black;
+}
+
+.col {
+    margin: 25px;
+}
