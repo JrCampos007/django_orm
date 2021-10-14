@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Book Detail</title>
+        {% load static %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div id="bookpage">
+            <h2>{{book.title}}</h2>
+            <p>ID: {{book.id}}<p>
+            <p>Description: {{book.desc}}<p>
+            <p>Authors:<p>
+            {% for author in book.authors.all %}
+            <ul>
+                <li>{{author.first_name}} {{author.last_name}}</li>
+            </ul>
+            {% endfor %}
+            <a href="/"><button class="btn btn-primary form-row button-pad">Go to Books</button></a>
+            <a href="/authors"><button class="btn btn-primary form-row button-pad">Go to Authors</button></a>
+            <form method="POST" action="/assign_author">     
+                {% csrf_token %}        
+                <div class="form-row">
+                    <select class="browser-default custom-select short" name="new_author">
+                        <option selected>Select Additional Author</option>
+                        {% for author in authors %}    
+                            <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>        
+                        {% endfor %}
+                </div>
+                <input type="hidden" name="book_id" value="{{book.id}}">
+                <input class="btn btn-primary short-button" type="submit" value="Add">
+            </form>
+        </div>
+    </body>
+</html>
