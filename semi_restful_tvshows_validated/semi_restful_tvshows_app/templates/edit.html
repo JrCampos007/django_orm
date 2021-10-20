@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <a href="/"><button class="button float">Go Back</button></a>
+    <div id="wrapper-edit">
+        <h1>Edit Show {{show.id}}:</h1>
+
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    <!-- CSS errors with message.tags -->
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form method="POST" action="update">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" value="{{show.title}}">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="network">Network</label>
+                    <select class="form-control" name="network">
+                        <option selected value="{{show.network}}">{{show.network}}</option>
+                        <option>Disney+</option>
+                        <option>Fox</option>
+                        <option>PBS</option>
+                        <options>ESPN</options>
+                    </select>
+                </div>
+                <div class="form-group date-pick col-md-7">
+                    <label for="release_date">Release Date</label>
+                    <input type="date" class="form-control" name="release_date" value="{{show.release_date|date:"Y-m-d"}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" name="description" value="{{show.description}}">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Update">
+        </form>
+    </div>
+</body>
+</html>

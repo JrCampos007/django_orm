@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Show</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <a href="/"><button class="button float">Go Back</button></a>
+    <div id="wrapper-new">
+        <h1>Add a New Show:</h1>
+        <form method="POST" action="create">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title">
+                <h6 id="show_title_valid"></h6>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="network">Network</label>
+                    <select class="form-control" name="network">
+                        <option selected></option>
+                        <option>Disney+</option>
+                        <option>Fox</option>
+                        <option>PBS</option>
+                        <option>ESPN</option>
+                        <option>Amazon</option>
+                    </select>
+                </div>
+                <div class="form-group date-pick col-md-7">
+                    <label for="release_date">Release Date</label>
+                    <input type="date" class="form-control" name="release_date">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" name="description">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Create">
+        </form>
+        {% if messages %}
+        <h4 class="messages">Entry errors:</h4>
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    <!-- CSS errors with message.tags -->
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/show.js' %}"></script>
+</body>
+</html>
