@@ -1,0 +1,14 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1, label {
+    color: white;
+}
+
+div.position {
+    margin-top: 30px;
+    text-align: center;
+    align-content: center;
+}
