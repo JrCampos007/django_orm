@@ -1,0 +1,56 @@
+html  {
+    background-image: url("https://png.pngtree.com/png-clipart/20201229/ourlarge/pngtree-beautiful-book-black-and-white-clipart-png-image_2667209.jpg");
+    background-color: #cccccc;
+    background-size: 200px;
+  }
+body{
+    background-color: rgb(147, 221, 221);
+}
+.page-header {
+    border-bottom: 1px black solid;
+}
+.container {
+    display: flex;
+    align-content: space-between;
+}
+.left {
+    flex: 1;
+    padding: 50px;
+}
+.right {
+    flex: 1;
+    padding: 50px;
+}
+.logoff {
+    font-size: 12pt;
+    float: right;
+}
+.form-label {
+    font-size: 20pt;
+}
+.bump {
+    margin-top: 50px;
+}
+.indent {
+    padding-left: 10px;
+}
+.big-indent {
+    padding-left: 50px;
+}
+.pad-right {
+    padding-right: 50px;
+}
+.em {
+    font-style: italic;
+}
+.button {           /* styling changes button appearance to a link */
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.heavy {
+    font-size: 16pt;
+    font-weight: bold;
+}
